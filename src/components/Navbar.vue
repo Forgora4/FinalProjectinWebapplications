@@ -55,7 +55,6 @@
 
 .nav-links a {
   text-decoration: none;
-  color: #f1f5f4;
   color: #a1a1a1;
   font-size: 0.72rem;
   font-weight: 600;
