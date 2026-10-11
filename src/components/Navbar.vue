@@ -65,7 +65,7 @@
 .nav-links a:hover,
 .nav-links a:focus-visible,
 .nav-links a.active {
-  color: #f4a51c;
+  color: #ffffff;
 }
 
 @media (max-width: 640px) {

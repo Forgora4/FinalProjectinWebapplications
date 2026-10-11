@@ -74,7 +74,7 @@ h1 {
 
 .motto {
   margin: 0.8rem 0 2rem;
-  color: #f4a51c;
+  color: #e3e3e3;
   font-size: 1.1rem;
 }
 
@@ -82,7 +82,7 @@ h1 {
   display: inline-block;
   padding: 0.75rem 1.2rem;
   border-radius: 3px;
-  background: #f4a51c;
+  background: #e3e3e3;
   color: #132526;
   font-size: 0.85rem;
   font-weight: 700;

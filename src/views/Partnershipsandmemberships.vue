@@ -50,7 +50,7 @@ const partners = [
 <style scoped>
 .partners-section {
   padding: 1.5rem 1.5rem 3rem;
-  background: #fff;
+  background: #3E3C3B;
   color: #263f44;
   text-align: center;
   scroll-margin-top: 5rem;
@@ -62,7 +62,7 @@ const partners = [
 
 .eyebrow {
   margin: 0 0 0.45rem;
-  color: #24484e;
+  color: #ffffff;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -70,7 +70,7 @@ const partners = [
 
 .section-header h2 {
   margin: 0;
-  color: #f5a21b;
+  color: #ffffff;
   font-size: clamp(1.6rem, 3vw, 2rem);
   font-weight: 700;
   line-height: 1.2;
@@ -78,7 +78,7 @@ const partners = [
 
 .subtitle {
   margin: 0.25rem 0 0;
-  color: #aeb2b4;
+  color: #ffffff;
   font-size: 0.78rem;
 }
 
@@ -124,7 +124,7 @@ const partners = [
 
 .oracle-wordmark small {
   margin-top: 0.2rem;
-  color: #333;
+  color: #ffffff;
   font-size: 0.95rem;
 }
 
@@ -148,7 +148,7 @@ const partners = [
   padding: 0.55rem 0.9rem;
   border: 0;
   border-radius: 2px;
-  background: #f5a21b;
+  background: #a1a1a1;
   color: #172d30;
   font-size: 0.65rem;
   cursor: pointer;
@@ -156,7 +156,7 @@ const partners = [
 }
 
 .view-more:hover {
-  background: #ffb739;
+  background: #a1a1a1;
   transform: translateY(-1px);
 }
 

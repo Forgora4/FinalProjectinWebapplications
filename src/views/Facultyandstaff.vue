@@ -107,7 +107,7 @@ const departments = [
 .faculty-section {
   padding: 4.5rem 1.5rem 5rem;
   background: #e7e7e7;
-  color: #315a62;
+  color: #363636;
   scroll-margin-top: 5rem;
 }
 
@@ -130,7 +130,7 @@ const departments = [
 
 .dean-feature h3 {
   margin: 0 0 1rem;
-  color: #315a62;
+  color: #a1a1a1;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.25rem;
   font-weight: 400;
@@ -155,7 +155,7 @@ const departments = [
 .section-heading h2,
 .people-group h3 {
   margin: 0;
-  color: #315a62;
+  color: #a1a1a1;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(1.8rem, 3vw, 2.35rem);
   font-weight: 400;
@@ -185,14 +185,14 @@ const departments = [
   object-fit: cover;
   object-position: center top;
   border: 1px solid #d9d5c9;
-  border-bottom: 3px solid #e6a52f;
+  border-bottom: 3px solid #a1a1a1;
   background: #f1f1f1;
   box-shadow: 0 3px 10px rgba(30, 52, 54, 0.12);
 }
 
 .person h4 {
   margin: 0.75rem 0 0.15rem;
-  color: #315a62;
+  color: #a1a1a1;
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1rem;
   font-weight: 500;
