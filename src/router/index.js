@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Homepage from '../components/Homepage.vue'
 import ComputerScience from '../views/ComputerScience.vue'
 import InformationTechnology from '../views/InformationTechnology.vue'
+import BSDMIA from '../views/BSDMIA.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +32,16 @@ const router = createRouter({
       name: 'information-technology',
       component: InformationTechnology,
     },
+    {
+      path: '/BSDMIA',
+      name: 'BSDMIA',
+      component: BSDMIA,
+    },
+    {
+      path: '/BLIS',
+      name: 'BLIS',
+      component: () => import('../views/BLIS.vue'),
+    }
   ],
 })
 

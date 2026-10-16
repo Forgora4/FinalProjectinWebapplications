@@ -1,7 +1,36 @@
 <script setup>
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+const programsOpen = ref(false)
+const hoverDismissed = ref(false)
+const openedByClick = ref(false)
+
+function openProgramsOnHover() {
+  if (!hoverDismissed.value && !openedByClick.value) {
+    programsOpen.value = true
+  }
+}
+
+function closeHoveredPrograms() {
+  hoverDismissed.value = false
+  if (!openedByClick.value) {
+    programsOpen.value = false
+  }
+}
+
+function togglePrograms() {
+  programsOpen.value = !programsOpen.value
+  openedByClick.value = programsOpen.value
+  hoverDismissed.value = !programsOpen.value
+}
+
+function closePrograms() {
+  programsOpen.value = false
+  openedByClick.value = false
+  hoverDismissed.value = true
+}
 </script>
 
 <template>
@@ -10,6 +39,9 @@ const route = useRoute()
     :class="{
       'navbar-wrap--home': route.name === 'home',
       'navbar-wrap--information-technology': route.name === 'information-technology',
+      'navbar-wrap--bsdmia': route.name === 'BSDMIA',
+      'navbar-wrap--computer-science': route.name === 'computer-science',
+      'navbar-wrap--blis': route.name === 'BLIS',
     }"
   >
     <div class="navbar">
@@ -18,18 +50,48 @@ const route = useRoute()
       </RouterLink>
 
       <nav class="nav-links" aria-label="Main navigation">
-        <RouterLink to="/#hero">Home</RouterLink>
-        <details class="nav-dropdown">
-          <summary>Academic Programs</summary>
+        <RouterLink
+          to="/#hero"
+          :class="{ 'nav-link--active': route.name === 'home' && (!route.hash || route.hash === '#hero') }"
+        >
+          Home
+        </RouterLink>
+        <details
+          class="nav-dropdown"
+          :class="{
+            'nav-dropdown--active':
+              route.name === 'computer-science' ||
+              route.name === 'information-technology' ||
+              route.name === 'BSDMIA' ||
+              route.name === 'BLIS' ||
+              (route.name === 'home' && ['#programs', '#program-blis'].includes(route.hash)) ||
+              (openedByClick && programsOpen),
+          }"
+          :open="programsOpen"
+          @mouseenter="openProgramsOnHover"
+          @mouseleave="closeHoveredPrograms"
+        >
+          <summary @click.prevent="togglePrograms">Academic Programs</summary>
           <div class="submenu">
-            <RouterLink to="/#programs">All Programs</RouterLink>
-            <RouterLink to="/computer-science">Computer Science</RouterLink>
-            <RouterLink to="/information-technology">Information Technology</RouterLink>
-            <RouterLink to="/#program-bsdmia">Digital Media and Interactive Arts</RouterLink>
-            <RouterLink to="/#program-blis">Library Information Science</RouterLink>
+            <RouterLink to="/#programs" @click="closePrograms">All Programs</RouterLink>
+            <RouterLink to="/computer-science" @click="closePrograms">Computer Science</RouterLink>
+            <RouterLink to="/information-technology" @click="closePrograms">
+              Information Technology
+            </RouterLink>
+            <RouterLink to="/BSDMIA" @click="closePrograms">
+              Digital Media and Interactive Arts
+            </RouterLink>
+            <RouterLink to="/blis" @click="closePrograms">
+              Library Information Science
+            </RouterLink>
           </div>
         </details>
-        <RouterLink to="/#partnerships">Partnerships</RouterLink>
+        <RouterLink
+          to="/#partnerships"
+          :class="{ 'nav-link--active': route.name === 'home' && route.hash === '#partnerships' }"
+        >
+          Partnerships
+        </RouterLink>
       </nav>
     </div>
   </header>
@@ -53,8 +115,22 @@ const route = useRoute()
 }
 
 .navbar-wrap--information-technology {
-  background: #725500;
+  background: #244b53;
 }
+
+.navbar-wrap--computer-science {
+  background: #244b53;
+}
+
+.navbar-wrap--bsdmia {
+  background: #4f4066;
+  opacity: 0.8;
+}
+.navbar-wrap--blis {
+  background: #2e4557;
+  opacity: 0.8;
+}
+
 
 .navbar {
   max-width: 790px;
@@ -91,6 +167,21 @@ const route = useRoute()
   font-weight: 600;
   white-space: nowrap;
   transition: color 0.2s ease;
+}
+
+.nav-links > a,
+.nav-dropdown > summary {
+  padding-bottom: 0.2rem;
+  background-image: linear-gradient(#ffd447, #ffd447);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 2px;
+  transition: background-size 0.2s ease;
+}
+
+.nav-links > a.nav-link--active,
+.nav-dropdown--active > summary {
+  background-size: 100% 2px;
 }
 
 .nav-dropdown {

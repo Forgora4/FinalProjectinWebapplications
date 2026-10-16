@@ -49,15 +49,17 @@ const programs = [
         :key="program.code"
         class="program-card"
       >
-        <div class="program-logo-wrap">
-          <RouterLink
-            v-if="program.code === 'BSCS' || program.code === 'BSIT'"
-            :to="program.code === 'BSCS' ? '/computer-science' : '/information-technology'"
-            :aria-label="`Open ${program.title} program page`"
+      <div class="program-logo-wrap">
+        <RouterLink
+         v-if="program.code === 'BSCS' || program.code === 'BSIT' || program.code === 'BSDMIA'"
+         :to="program.code === 'BSCS' ? '/computer-science' : program.code === 'BSIT' ? '/information-technology' : '/BSDMIA'"
+         :aria-label="`Open ${program.title} program page`"
+  >
+
           >
-            <img class="program-logo" :src="program.logo" :alt="program.logoAlt" />
+            <img class="program-logo" :src="program.logo" :alt="program.logoAlt" 
           </RouterLink>
-          <img v-else class="program-logo" :src="program.logo" :alt="program.logoAlt" />
+          <img v-else class="program-logo" :src="program.logo" :alt="program.logoAlt"  
         </div>
         <div class="program-details">
           <p class="program-code">{{ program.code }}</p>

@@ -5,6 +5,9 @@ import computerScienceLogo from '../assets/CSS_PNG-150x150.png'
 <template>
   <main class="computer-science-page">
     <section class="intro">
+      <div class="intro-backdrop" aria-hidden="true">
+        <img :src="computerScienceLogo" alt="" />
+      </div>
       <div class="intro-copy">
         <p class="eyebrow">Academic Program · BSCS</p>
         <h1>Computer Science</h1>
@@ -17,7 +20,6 @@ import computerScienceLogo from '../assets/CSS_PNG-150x150.png'
           <a class="section-button" href="#campus-life">Campus Life</a>
         </nav>
       </div>
-      <img class="program-logo" :src="computerScienceLogo" alt="Computer Science Society logo" />
     </section>
 
     <div class="content-sections">
@@ -292,85 +294,107 @@ import computerScienceLogo from '../assets/CSS_PNG-150x150.png'
 <style scoped>
 .computer-science-page {
   min-height: 100vh;
-  padding: 7rem max(1.5rem, calc((100vw - 900px) / 2)) 4rem;
-  background: #e5e5e5;
-  color: #1a1a1a;
+  padding: 0 1.5rem 4rem;
+  background: #ffffff;
+  color: #25364a;
 }
 
 .intro {
-  display: flex;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 340px;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: clamp(2rem, 7vw, 5rem);
-  background: #244b53;
-  color: #ffffff;
+  overflow: hidden;
+  margin-inline: -1.5rem;
+  padding: 3.5rem max(1.5rem, calc((100vw - 720px) / 2));
+  color: #f8fafc;
+  text-align: center;
+}
+
+.intro-backdrop {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 62% 48%, rgba(227, 227, 227, 0.12), transparent 48%),
+    #4f4066;
+}
+
+.intro-backdrop img {
+  width: min(50vw, 500px);
+  height: min(50vw, 500px);
+  object-fit: cover;
+  opacity: 0.075;
+  filter: grayscale(1) brightness(2.2);
+  transform: rotate(-12deg) scale(0.9);
 }
 
 .intro-copy {
-  max-width: 620px;
-}
-
-.program-logo {
-  flex: 0 0 auto;
-  width: clamp(100px, 18vw, 180px);
-  height: clamp(100px, 18vw, 180px);
-  object-fit: contain;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .eyebrow {
-  margin: 0 0 0.8rem;
-  color: #e5bd69;
-  font-size: 0.75rem;
+  margin: 0 0 0.65rem;
+  color: #cbd5d1;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 h1 {
-  max-width: 700px;
   margin: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  font-weight: 500;
-  line-height: 1.05;
+  color: #f8fafc;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
 .lead {
-  max-width: 580px;
-  margin: 1.5rem 0 0;
-  color: #e5eeee;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 620px;
+  margin: 0.9rem auto 0;
+  color: #e3e3e3;
+  font-size: 0.95rem;
   line-height: 1.7;
 }
 
 .page-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.75rem;
-  margin-top: 2rem;
+  margin-top: 1.25rem;
 }
 
 .section-button {
-  display: inline-block;
-  padding: 0.75rem 1rem;
-  border: 1px solid #e5bd69;
-  color: #ffffff;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
+  color: #f8fafc;
+  font-size: 0.85rem;
+  font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .section-button:hover,
 .section-button:focus-visible {
-  background: #e5bd69;
-  color: #244b53;
+  border-color: currentColor;
+  color: #ffc247;
 }
 
 .content-sections {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
-  padding: 1rem 0;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .content-card {
@@ -569,17 +593,48 @@ h1 {
 
 @media (max-width: 640px) {
   .computer-science-page {
-    padding-top: 6rem;
+    padding: 0 1rem 2.5rem;
   }
 
   .intro {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    gap: 1.5rem;
+    min-height: 300px;
+    margin-inline: -1rem;
+    padding: 5rem 1.25rem 2rem;
+  }
+
+  .intro-backdrop img {
+    width: 115vw;
+    height: 115vw;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+  }
+
+  h1 {
+    font-size: clamp(1.65rem, 7vw, 2.1rem);
+  }
+
+  .lead {
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   .content-sections {
     grid-template-columns: 1fr;
+  }
+
+  .content-card {
+    padding: 1.5rem 0;
+  }
+
+  .content-card h2 {
+    font-size: 1.05rem;
+  }
+
+  .content-card ol {
+    padding-left: 1.1rem;
+    font-size: 0.82rem;
   }
 
   .information-section .knowledge-areas {
@@ -588,7 +643,7 @@ h1 {
 
   .outcomes-table th,
   .outcomes-table td {
-    padding: 0.7rem;
+    padding: 0.5rem 0.4rem;
   }
 }
 </style>
